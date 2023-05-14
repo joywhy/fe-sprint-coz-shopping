@@ -4,6 +4,8 @@ import DropMenu from './DropMenu.js';
 import {  Link } from "react-router-dom";
 import HbMenu from '../icon/HbMenu.js';
 import Logoicon from '../icon/Logoicon.js';
+
+import ReactDOM from 'react-dom';
 //rsc
 const Container = styled.div`
   position: relative;
@@ -65,7 +67,8 @@ const Header = () => {
           fill="black" 
         />
         </div>
-        {displayMenu ? <DropMenu /> : null}
+       
+        {displayMenu ? ReactDOM.createPortal(<DropMenu /> ,document.getElementById("hbMeun-root")) : null}
       </Wrap>
     </Container>
   );

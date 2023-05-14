@@ -5,11 +5,12 @@ import Star from '../icon/Star';
 import Boxicon from '../icon/Boxicon';
 const Container = styled.div`
   position: absolute;
-  bottom: -9rem;
-  right: 0;
+
+top:4rem;  
+right: 4rem;
   width: 12rem;
   height: auto;
-
+z-index: 10;
   > div {
     position: absolute;
     top: -0.5rem;
