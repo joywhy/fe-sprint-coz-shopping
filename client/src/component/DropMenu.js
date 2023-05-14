@@ -5,7 +5,7 @@ import Star from '../icon/Star';
 import Boxicon from '../icon/Boxicon';
 const Container = styled.div`
   position: absolute;
-
+//나이제 push 할수있는거임? ㅠ
 top:4rem;  
 right: 4rem;
   width: 12rem;
