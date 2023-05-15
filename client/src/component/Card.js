@@ -48,7 +48,7 @@ const Card = ({ type, title, imgUrl, discount, price ,brandName,follower,brandIm
           <Star width="24" height="24" fill="#FFD361" className="starcard" />
         </div>
   
-        {type === 'Product' ? (
+        {type === 'Product' ? (// 컴포넘트
           <div className='deswrap'>
             <Des>
               <h3>{title}</h3>

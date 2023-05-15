@@ -28,7 +28,7 @@ function App() {
 
       <Routes>
         <Route path="/" element={<Main data={cardData} />} />
-        <Route path="/products/list" element={<List />} />
+        <Route path="/products/list" element={<List data={cardData} />} />
         <Route path="/bookmark" element={<Bookmark />} />
       </Routes>
       <Footer />

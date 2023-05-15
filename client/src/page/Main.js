@@ -4,7 +4,7 @@ import styled from 'styled-components';
 
 const Container = styled.div`
   margin: 0 76px;
-  border: 1px solid red;
+  //border: 1px solid red;
   margin-top: 24px;
 `;
 const Article = styled.article`
@@ -28,7 +28,7 @@ const Main = ({ data }) => {
         <h2>상품리스트</h2>
         <div>
           {datafilter.map((el, idx) => {
-            console.log(el);
+           // console.log(el);
             let type = el.type;
             let title = el.title;
             let imgUrl =el.image_url;

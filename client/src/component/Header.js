@@ -16,6 +16,7 @@ const Container = styled.div`
   justify-content: space-between;
   align-items: center;
   box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
 `;
 const Logo = styled.div`
   display: flex;
