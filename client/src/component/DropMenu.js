@@ -5,12 +5,11 @@ import Star from '../icon/Star';
 import Boxicon from '../icon/Boxicon';
 const Container = styled.div`
   position: absolute;
-//나이제 push 할수있는거임? ㅠ
-top:4rem;  
-right: 4rem;
+  top: 4rem;
+  right: 4rem;
   width: 12rem;
   height: auto;
-z-index: 10;
+  z-index: 10;
   > div {
     position: absolute;
     top: -0.5rem;
@@ -40,7 +39,6 @@ z-index: 10;
       padding-right: 5px;
 
       .star {
-
       }
     }
     > li:nth-child(2) {
@@ -76,7 +74,7 @@ const DropMenu = () => {
         <li>
           <Link to="/bookmark">
             {' '}
-            <Star width="20" height="20" fill="gray" className="star" /> 북마크
+            <Star width="24" height="24" fill="#DFDFDF" className="star" /> 북마크
             페이지
           </Link>
         </li>
