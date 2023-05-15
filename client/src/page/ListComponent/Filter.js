@@ -4,7 +4,6 @@ import styled from "styled-components";
 const Container =styled.div`
 width: 30rem;
 display: flex;
-//border: 1px solid red;
 margin:  0 auto;
 justify-content: space-between;
 `;
