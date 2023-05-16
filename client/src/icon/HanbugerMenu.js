@@ -1,6 +1,6 @@
 // 리덕스 구현 후 조건부 렌더
 
-const HbMenu = ({ width, height, fill, className }) => {
+const HanbugerMenu = ({ width, height, fill, className }) => {
   return (
     <svg
       width={width}
@@ -21,4 +21,4 @@ const HbMenu = ({ width, height, fill, className }) => {
   );
 };
 
-export default HbMenu;
+export default HanbugerMenu;

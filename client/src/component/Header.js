@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 import DropMenu from './DropMenu.js';
-import HbMenu from '../icon/HbMenu.js';
+import HanbugerMenu from '../icon/HanbugerMenu.js';
 import Logoicon from '../icon/Logoicon.js';
 
 // 스타일링
@@ -49,7 +49,7 @@ const Wrap = styled.div`
   position: relative;
   width: 5rem;
   height: 1.5rem;
-  .hbmenu {
+  .HanbugerMenu {
     position: relative;
     cursor: pointer;
   }
@@ -57,10 +57,10 @@ const Wrap = styled.div`
 // header 컴포넌트
 const Header = () => {
   // 햄버거 메뉴 활성화 상태
-  const [displayMenu, setDisplayMenu] = useState(false);
+  const [isOpenMenu, setIsOpenMenu] = useState(false);
 
   const dropmenuHandler = () => {
-    setDisplayMenu(!displayMenu);
+    setIsOpenMenu(!isOpenMenu);
 
   };
 
@@ -69,7 +69,6 @@ const Header = () => {
       {/* 좌측 영역 */}
       <Logo>
         <Link to="/">
-          {' '}
           <Logoicon width="55" height="30" />
         </Link>
         <Link to="/">
@@ -80,12 +79,12 @@ const Header = () => {
       {/* 우측영역 */}
       <Wrap>
         <div onClick={dropmenuHandler}>
-          <HbMenu className="hbmenu" width="30" height="30" fill="black" />
+          <HanbugerMenu className="HanbugerMenu" width="30" height="30" fill="black" />
         </div>
-        {displayMenu
+        {isOpenMenu
           ? ReactDOM.createPortal(
               <DropMenu dropmenuHandler={dropmenuHandler}/>,
-              document.getElementById('hbMeun-root'),
+              document.getElementById('HanbugerMenu-root'),
             )
           : null}
       </Wrap>
