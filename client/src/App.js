@@ -31,7 +31,7 @@ function App() {
       <Header />
 
       <Routes>
-        <Route path="/" element={<Main data={products} />} />
+        <Route path="/" element={<Main data={products} />} /> 
         <Route path="/products/list" element={<List data={products} />} />
         <Route path="/bookmark" element={<Bookmark />} />
       </Routes>
