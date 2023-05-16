@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from "styled-components";
 import Card from '../../component/Card';
+
 const Container =styled.div`
 margin-top: 2rem;
-//border: 1px solid red;
 display: flex;
 justify-content: space-between;
 flex-wrap: wrap;
