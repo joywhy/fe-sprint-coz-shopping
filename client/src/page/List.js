@@ -13,29 +13,45 @@ const Container = styled.div`
 `;
 
 const List = () => {
-  const products = useSelector((state) => state.products);
+  const productList = useSelector((state) => state.products);
   const [filtercategory, setfilterCategory] = useState('All');
   const filterarray = ['All', 'Product', 'Category', 'Exhibition', 'Brand'];
-
-  const filterHandler = (idx) => {
-    setfilterCategory(filterarray[idx]);
+  
+  const categoryEnum = {
+  ALL: "All",
+  PRODUCT: "Product",
+  CATEGORY: "Category",
+  EXHIBITION: "Exhibition",
+  BRAND: "Brand",
   };
-  const filterData = products.filter((el) => {
-    if (filtercategory === 'All') {
-      return el;
+  Object.freeze (categoryEnum);
+
+  const categoryList = [
+        '전체',
+        '상품',
+        '카테고리',
+        '기획전',
+        '브랜드',
+      ];
+
+
+  const filterHandler = (category) => {
+    setfilterCategory(category);
+  };
+  const filterData = productList.filter((product) => {
+    if (filtercategory === categoryEnum.ALL) {
+      return product;
     } else {
-      return el.type === filtercategory;
+      return product.type === filtercategory;
     }
   });
 
   return (
     <Container>
       {/* 카테고리 분류 */}
-      <Filter
-        filterHandler={(idx) => {
-          filterHandler(idx);
-
-        }}
+      <Filter filterHandler={(category) => { filterHandler(category) }} 
+      categoryList={categoryList}
+      filterarray={filterarray}
       />
       {/* 필터링된 데이터 영역 */}
       <ListEl filterData={filterData} />
