@@ -13,18 +13,18 @@ const Container = styled.div`
 `;
 
 const List = () => {
-  const products = useSelector((state) => state.products);
+  const productList = useSelector((state) => state.products);
   const [filtercategory, setfilterCategory] = useState('All');
   const filterarray = ['All', 'Product', 'Category', 'Exhibition', 'Brand'];
 
   const filterHandler = (idx) => {
     setfilterCategory(filterarray[idx]);
   };
-  const filterData = products.filter((el) => {
+  const filterData = productList.filter((product) => {
     if (filtercategory === 'All') {
-      return el;
+      return product;
     } else {
-      return el.type === filtercategory;
+      return product.type === filtercategory;
     }
   });
 

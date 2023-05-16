@@ -13,7 +13,7 @@ import Bookmark from './page/Bookmark.js';
 import Footer from './component/Footer';
 
 function App() {
- const products = useSelector(state=>state.products) //배열형태의 제품데이터
+ //const productList = useSelector(state=>state.products) //배열형태의 제품데이터
  const dispatch = useDispatch();
 
   useEffect(() => {
@@ -29,7 +29,7 @@ function App() {
     <div className="App">
       <Header />
       <Routes>
-        <Route path="/" element={<Main data={products} />} /> 
+        <Route path="/" element={<Main  />} /> 
         <Route path="/products/list" element={<List />} />
         <Route path="/bookmark" element={<Bookmark />} />
       </Routes>

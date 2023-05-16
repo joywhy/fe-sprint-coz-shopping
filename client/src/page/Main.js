@@ -1,6 +1,7 @@
 import React from 'react';
 import Card from '../component/Card';
 import styled from 'styled-components';
+import { useSelector } from 'react-redux';
 
 const Container = styled.div`
   margin: 0 76px;
@@ -18,26 +19,28 @@ const Article = styled.article`
   }
 `;
 
-const Main = ({ data }) => {
-  let datafilter = data.filter((el, idx) => {
-    return el.id <4;//Exhibition Product Category Brand
+const Main = () => {
+  const productList = useSelector(state=>state.products)
+
+  let datafilter = productList.filter((product, idx) => {
+    return product.id <4;//Exhibition Product Category Brand
   });
   return (
     <Container>
       <Article>
         <h2>상품리스트</h2>
         <div>
-          {datafilter.map((el, idx) => {
+          {datafilter.map((product, idx) => {
            // console.log(el);
-            let type = el.type;
-            let title = el.title;
-            let imgUrl =el.image_url;
-            let discount = el.discountPercentage;
-            let subTitle = el.sub_title;
-            let price = el.price;
-            let brandName = el.brand_name;
-            let follower = el.follower;
-            let brandImg =el.brand_image_url;            ;
+            let type = product.type;
+            let title = product.title;
+            let imgUrl =product.image_url;
+            let discount = product.discountPercentage;
+            let subTitle = product.sub_title;
+            let price = product.price;
+            let brandName = product.brand_name;
+            let follower = product.follower;
+            let brandImg =product.brand_image_url;            ;
 
             return <Card key ={idx} type={type} title={title} imgUrl={imgUrl} discount={discount} price={price}
             brandName={brandName} follower={follower} brandImg={brandImg}
