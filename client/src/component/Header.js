@@ -39,7 +39,7 @@ const Logo = styled.div`
   }
 
   > h1 {
-    font-size: 1.5rem; //32px
+    font-size: 1.5rem; 
   }
   > h1:hover {
     cursor: pointer;
@@ -61,6 +61,7 @@ const Header = () => {
 
   const dropmenuHandler = () => {
     setDisplayMenu(!displayMenu);
+
   };
 
   return (
@@ -83,7 +84,7 @@ const Header = () => {
         </div>
         {displayMenu
           ? ReactDOM.createPortal(
-              <DropMenu />,
+              <DropMenu dropmenuHandler={dropmenuHandler}/>,
               document.getElementById('hbMeun-root'),
             )
           : null}
