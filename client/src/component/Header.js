@@ -61,7 +61,6 @@ const Header = () => {
 
   const dropmenuHandler = () => {
     setIsOpenMenu(!isOpenMenu);
-
   };
 
   return (

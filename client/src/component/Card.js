@@ -39,7 +39,17 @@ const Des = styled.div`
     color: #452cdd;
   }
 `;
-const Card = ({ type, title, imgUrl, discount, price ,brandName,follower,brandImg,subTitle}) => {
+const Card = (props) => {
+  const type= props.type;
+  const title= props.title;
+  const imgUrl= props.imgUrl;
+  const discount= props.discount;
+  const price= props.price;
+  const brandName= props.brandName;
+  const follower= props.follower;
+  const brandImg= props.brandImg;
+  const subTitle= props.subTitle;
+
   return (
     <article>
       <Container>
