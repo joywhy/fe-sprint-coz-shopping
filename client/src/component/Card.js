@@ -3,7 +3,9 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import Star from '../icon/Star';
 import Modal from './Modal';
-import Backdrop from './Backdrop';
+//import Backdrop from './Backdrop';
+import { useDispatch } from 'react-redux';
+import { toggleBookmark } from '../store/bookmarkSlice';
 const Container = styled.div`
   width: 264px;
   height: 264px;
@@ -41,16 +43,21 @@ const Des = styled.div`
     color: #452cdd;
   }
 `;
-const Card = (props) => {
-  const type= props.type;
-  const title= props.title;
-  const imgUrl= props.imgUrl;
-  const discount= props.discount;
-  const price= props.price;
-  const brandName= props.brandName;
-  const follower= props.follower;
-  const brandImg= props.brandImg;
-  const subTitle= props.subTitle;
+const Card = (product) => {
+  const {
+    type,
+    title,
+    imgUrl,
+    discount,
+    price,
+    brandName,
+    follower,
+    brandImg,
+    subTitle,
+  }=product;
+
+
+  const dispatch = useDispatch();
 
   const [isOpenModal,SetIsOpenModal]=useState(false);
  const ModalHandler=()=>{
@@ -61,6 +68,7 @@ const Card = (props) => {
  const markedHandler =(event)=>{
   event.stopPropagation();//부모 엘리먼트에게도 이벤트가 전파되는 것을 방지
   setIsMarked(!isMarked);
+  dispatch(toggleBookmark(product));
  }
   return (
 
