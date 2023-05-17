@@ -58,12 +58,9 @@ const Card = (props) => {
   
  }
  const [isMarked,setIsMarked] =useState(false);
- const markedHandler =()=>{
-  //SetIsOpenModal(false);
+ const markedHandler =(event)=>{
+  event.stopPropagation();//부모 엘리먼트에게도 이벤트가 전파되는 것을 방지
   setIsMarked(!isMarked);
-
-  //별 아이콘을 클릭하면 모달창도 같이 클릭되나 이를 어떻게 해결해야할 지 고민입니다.
-  
  }
   return (
 
