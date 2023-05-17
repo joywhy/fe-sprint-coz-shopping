@@ -12,7 +12,7 @@ const Container = styled.div`
   > .imgwrap {
     position: relative;
     margin-bottom: 6px;
-    > .starcard {
+     .starcard {
       position: absolute;
       bottom: 1rem;
       right: 1rem;
@@ -55,6 +55,15 @@ const Card = (props) => {
   const [isOpenModal,SetIsOpenModal]=useState(false);
  const ModalHandler=()=>{
   SetIsOpenModal(!isOpenModal);
+  
+ }
+ const [isMarked,setIsMarked] =useState(false);
+ const markedHandler =()=>{
+  //SetIsOpenModal(false);
+  setIsMarked(!isMarked);
+
+  //별 아이콘을 클릭하면 모달창도 같이 클릭되나 이를 어떻게 해결해야할 지 고민입니다.
+  
  }
   return (
 
@@ -65,7 +74,6 @@ const Card = (props) => {
               document.getElementById('modal-root'),
             )
           : null}
-
               {isOpenModal
           ? ReactDOM.createPortal(
               <Backdrop ModalHandler={ModalHandler}/>,
@@ -75,7 +83,15 @@ const Card = (props) => {
       <Container onClick={ModalHandler}  >
         <div className="imgwrap">
           {type === 'Brand' ?<Cardimg src={brandImg} /> : <Cardimg src={imgUrl} /> }
-          <Star width="24" height="24" fill="#FFD361" className="starcard" />
+          {isMarked? 
+          <div onClick={markedHandler}>
+          <Star width="24" height="24" fill="#FFD361" className="starcard"  />
+          </div>
+          :  
+          <div  onClick={markedHandler}>
+          <Star width="24" height="24" fill="gray" className="starcard"/> 
+          </div>
+          }
         </div>
   
         {type === 'Product' ? (// 컴포넘트

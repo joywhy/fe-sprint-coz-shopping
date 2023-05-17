@@ -7,7 +7,7 @@ import ListEl from './ListComponent/ListEl';
 
 //스타일링
 const Container = styled.div`
-  width: 80rem;
+  width: 90%;
   height: auto;
   margin: 0 auto;
 `;
@@ -49,9 +49,10 @@ const List = () => {
   return (
     <Container>
       {/* 카테고리 분류 */}
-      <Filter filterHandler={(category) => { filterHandler(category) }} 
+      <Filter filterHandler={(category) => { filterHandler(category) } } 
       categoryList={categoryList}
       filterarray={filterarray}
+      filtercategory={filtercategory}
       />
       {/* 필터링된 데이터 영역 */}
       <ListEl filterData={filterData} />
