@@ -66,12 +66,12 @@ const Card = (props) => {
             )
           : null}
 
-              {/* {isOpenModal
+              {isOpenModal
           ? ReactDOM.createPortal(
-              <Backdrop />,
+              <Backdrop ModalHandler={ModalHandler}/>,
               document.getElementById('backdrop-root'),
             )
-          : null}   */}
+          : null}  
       <Container onClick={ModalHandler}  >
         <div className="imgwrap">
           {type === 'Brand' ?<Cardimg src={brandImg} /> : <Cardimg src={imgUrl} /> }

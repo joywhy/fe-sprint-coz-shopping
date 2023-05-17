@@ -12,10 +12,12 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: transparent;
   z-index: 10;
   > .CardModal {
-    width: 744px;
-    height: 480px;
+    width: 60%;
+    height: 60%;
+
     filter: drop-shadow(0px 0px 36px rgba(0, 0, 0, 0.5)); //어떤 영향?
     border-radius: 1rem;
 
@@ -62,11 +64,11 @@ const Modal = (props) => {
     const brandName = props.brandName;
 
   return (
-    <Container>
+    <Container onClick={ModalHandler}> 
       <div className="CardModal">
         <div className="backImg" style={type === "Brand" ? { backgroundImage: `url(${brandImg})` } : { backgroundImage: `url(${imgUrl})` }}>
-            {/* 상단우측 x 버튼 background-image: {type==="Brand"?`url(/img.jpg)`:``}; */}
-          <div className="x-icon" onClick={ModalHandler}>
+        {/* 상단우측 x  버튼  */}
+        <div className="x-icon" onClick={ModalHandler}>
             <CancelIcon width="24" height="24" />
           </div>
           {/* 하단 북마크 아이콘과 타이틀 */}
