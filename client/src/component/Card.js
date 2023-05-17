@@ -1,6 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import Star from '../icon/Star';
+import Modal from './Modal';
+import Backdrop from './Backdrop';
 const Container = styled.div`
   width: 264px;
   height: 264px;
@@ -22,8 +25,7 @@ const Cardimg = styled.img`
   width: 264px;
   height: 210px;
   border: 1px solid rgba(0, 0, 0, 0.1);
-
-  border-radius: 12px;
+  border-radius: 1rem;
   position: relative;
 `;
 const Des = styled.div`
@@ -50,9 +52,27 @@ const Card = (props) => {
   const brandImg= props.brandImg;
   const subTitle= props.subTitle;
 
+  const [isOpenModal,SetIsOpenModal]=useState(false);
+ const ModalHandler=()=>{
+  SetIsOpenModal(!isOpenModal);
+ }
   return (
-    <article>
-      <Container>
+
+    <article >
+      {isOpenModal
+          ? ReactDOM.createPortal(
+              <Modal ModalHandler={ModalHandler} imgUrl={imgUrl} title={title} brandImg={brandImg} type={type} brandName={brandName}/>,
+              document.getElementById('modal-root'),
+            )
+          : null}
+
+              {isOpenModal
+          ? ReactDOM.createPortal(
+              <Backdrop ModalHandler={ModalHandler}/>,
+              document.getElementById('backdrop-root'),
+            )
+          : null}  
+      <Container onClick={ModalHandler}  >
         <div className="imgwrap">
           {type === 'Brand' ?<Cardimg src={brandImg} /> : <Cardimg src={imgUrl} /> }
           <Star width="24" height="24" fill="#FFD361" className="starcard" />
