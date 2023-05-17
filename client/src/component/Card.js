@@ -65,9 +65,10 @@ const Card = (props) => {
   return (
 
     <article >
+      {/* 모달창 */}
       {isOpenModal
           ? ReactDOM.createPortal(
-              <Modal ModalHandler={ModalHandler} imgUrl={imgUrl} title={title} brandImg={brandImg} type={type} brandName={brandName}/>,
+              <Modal ModalHandler={ModalHandler} imgUrl={imgUrl} title={title} brandImg={brandImg} type={type} brandName={brandName} markedHandler={markedHandler} isMarked={isMarked}/>,
               document.getElementById('modal-root'),
             )
           : null}
@@ -77,9 +78,11 @@ const Card = (props) => {
               document.getElementById('backdrop-root'),
             )
           : null}  
+
       <Container onClick={ModalHandler}  >
         <div className="imgwrap">
           {type === 'Brand' ?<Cardimg src={brandImg} /> : <Cardimg src={imgUrl} /> }
+          {/* 북마크 아이콘 */}
           {isMarked? 
           <div onClick={markedHandler}>
           <Star width="24" height="24" fill="#FFD361" className="starcard"  />

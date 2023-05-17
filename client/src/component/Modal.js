@@ -55,12 +55,16 @@ color: #FFFFFF;
 `;
 
 const Modal = (props) => {
-    const ModalHandler = props.ModalHandler;
-    const imgUrl = props.imgUrl;
-    const title = props.title;
-    const brandImg = props.brandImg;
-    const type = props.type;
-    const brandName = props.brandName;
+    const {
+      ModalHandler,
+      imgUrl,
+      title,
+      brandImg,
+      type,
+      brandName,
+      markedHandler,
+      isMarked
+    }= props;
 
   return (
     <Container onClick={ModalHandler}> 
@@ -72,9 +76,18 @@ const Modal = (props) => {
           </div>
           {/* 하단 북마크 아이콘과 타이틀 */}
           <BottomWrap>
-            <div className="star-icon">
+            {/* <div className="star-icon">
               <Star width="24" height="24" fill="#FFD361" />
-            </div>
+            </div> */}
+            {isMarked? 
+          <div onClick={markedHandler}>
+          <Star width="24" height="24" fill="#FFD361" className="starcard"  />
+          </div>
+          :  
+          <div  onClick={markedHandler}>
+          <Star width="24" height="24" fill="gray" className="starcard"/> 
+          </div>
+          }
             <h3>{type === "Brand" ?  brandName  : title }</h3>
           </BottomWrap>
         </div>
