@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import CancelIcon from '../icon/CancelIcon';
 import Star from '../icon/Star';
 
-const Container = styled.div`
+const Backdrop = styled.div`
   position: fixed;
   top: 0;
   left: 0;
@@ -12,7 +12,7 @@ const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: transparent;
+  background-color: rgba(255, 255, 255, 0.4);
   z-index: 10;
   > .CardModal {
     width: 60%;
@@ -33,7 +33,6 @@ const Container = styled.div`
         position: absolute;
         top: 1rem;
         right: 1rem;
-        //border: 1px solid red;
       }
       
     }
@@ -67,7 +66,7 @@ const Modal = (props) => {
     }= props;
 
   return (
-    <Container onClick={ModalHandler}> 
+    <Backdrop onClick={ModalHandler}> 
       <div className="CardModal">
         <div className="backImg" style={type === "Brand" ? { backgroundImage: `url(${brandImg})` } : { backgroundImage: `url(${imgUrl})` }}>
         {/* 상단우측 x  버튼  */}
@@ -76,9 +75,6 @@ const Modal = (props) => {
           </div>
           {/* 하단 북마크 아이콘과 타이틀 */}
           <BottomWrap>
-            {/* <div className="star-icon">
-              <Star width="24" height="24" fill="#FFD361" />
-            </div> */}
             {isMarked? 
           <div onClick={markedHandler}>
           <Star width="24" height="24" fill="#FFD361" className="starcard"  />
@@ -92,7 +88,7 @@ const Modal = (props) => {
           </BottomWrap>
         </div>
       </div>
-    </Container>
+    </Backdrop>
   );
 };
 
