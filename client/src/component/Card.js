@@ -65,7 +65,6 @@ const Card = (props) => {
               document.getElementById('modal-root'),
             )
           : null}
-
               {isOpenModal
           ? ReactDOM.createPortal(
               <Backdrop ModalHandler={ModalHandler}/>,

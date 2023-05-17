@@ -17,7 +17,6 @@ const Container = styled.div`
   > .CardModal {
     width: 60%;
     height: 60%;
-
     filter: drop-shadow(0px 0px 36px rgba(0, 0, 0, 0.5)); //어떤 영향?
     border-radius: 1rem;
 
