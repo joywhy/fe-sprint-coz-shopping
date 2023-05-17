@@ -7,7 +7,7 @@ import ListEl from './ListComponent/ListEl';
 
 //스타일링
 const Container = styled.div`
-  width: 80rem;
+  width: 90%;
   height: auto;
   margin: 0 auto;
 `;

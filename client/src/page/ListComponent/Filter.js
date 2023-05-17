@@ -20,7 +20,6 @@ const Filter = (props) => {
    const categoryList=props.categoryList;
    const filterarray=props.filterarray;
    const filtercategory=props.filtercategory;
-
   return (
     <Container>
       {categoryList.map((category, idx) => (
