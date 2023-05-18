@@ -50,11 +50,15 @@ const Card = ({product}) => {
   SetIsOpenModal(!isOpenModal);
   
  }
- const [isMarked,setIsMarked] =useState(false);
+ const isMarkedProduct =product.marked;
+ console.log(product.marked);
+ 
+ const [isMarked,setIsMarked] =useState(isMarkedProduct);
+
  const markedHandler =(event)=>{
   event.stopPropagation();//부모 엘리먼트에게도 이벤트가 전파되는 것을 방지
   setIsMarked(!isMarked);
- // console.log(product);
+
   dispatch(toggleBookmark(product));
  }
   return (
