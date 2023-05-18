@@ -12,10 +12,8 @@ export const bookmarkSlice=createSlice({
             markedProduct.id ===action.payload.id );
             if(index !== -1){
                 state.splice(index,1);
-
             }else{
                 state.push(action.payload);
-
             }
             localStorage.setItem("bookmarkIdList",JSON.stringify(state));
         }

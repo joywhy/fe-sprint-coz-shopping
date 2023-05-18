@@ -32,20 +32,7 @@ const Main = () => {
         <div>
           {datafilter.map((product, idx) => {
            // console.log(el);
-            let type = product.type;
-            let title = product.title;
-            let imgUrl =product.image_url;
-            let discount = product.discountPercentage;
-            let subTitle = product.sub_title;
-            let price = product.price;
-            let brandName = product.brand_name;
-            let follower = product.follower;
-            let brandImg =product.brand_image_url;            ;
-
-            return <Card key ={idx} type={type} title={title} imgUrl={imgUrl} discount={discount} price={price}
-            brandName={brandName} follower={follower} brandImg={brandImg}
-            subTitle={subTitle}
-            />;
+            return <Card product={product} key= {idx} />;
           })}
         </div>
       </Article>
