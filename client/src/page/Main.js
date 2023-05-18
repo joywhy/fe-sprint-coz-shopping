@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Card from '../component/Card';
 import styled from 'styled-components';
 import { useSelector } from 'react-redux';
@@ -20,32 +20,70 @@ const Article = styled.article`
 `;
 
 const Main = () => {
-  const productList = useSelector(state=>state.products)
+  const productList = useSelector(state=>state.products);
+  const bookmarkList = useSelector(state=>state.bookmark);
+//console.log(bookmarkList);
+ // useEffect
+//console.log(bookmarkList);
+  // for (let key in obj) {
+  //   const value = obj[key]
+  
+  //   console.log(key)
+  //   console.log(value)
+  // }
+
+  // let newData = {};
+
+  // for (let key in data) {
+  //   if (data.hasOwnProperty(key) && data[key].age <= 11) {
+  //     newData[key] = data[key];
+  //   }
+  // }
 
   let datafilter = productList.filter((product, idx) => {
-    return product.id <4;//Exhibition Product Category Brand
+    return product.id <4;
   });
+  
+  let bookmarkfilter = bookmarkList.filter((product, idx) => {
+    return product.id <4;
+    
+  });
+console.log(bookmarkfilter);
   return (
     <Container>
       <Article>
         <h2>상품리스트</h2>
         <div>
-          {datafilter.map((product, idx) => {
-           // console.log(el);
-            let type = product.type;
-            let title = product.title;
-            let imgUrl =product.image_url;
-            let discount = product.discountPercentage;
-            let subTitle = product.sub_title;
-            let price = product.price;
-            let brandName = product.brand_name;
-            let follower = product.follower;
-            let brandImg =product.brand_image_url;            ;
+          {datafilter.map((product,idx) => {
+            //console.log(product.id);
+            for(let i =0; i<bookmarkList.length;i++){
 
-            return <Card key ={idx} type={type} title={title} imgUrl={imgUrl} discount={discount} price={price}
-            brandName={brandName} follower={follower} brandImg={brandImg}
-            subTitle={subTitle}
-            />;
+              if(product.id ===bookmarkList[i].id){
+                //console.log("동작");
+                let marked =true;
+                //console.log(marked);
+                return <Card product={product} key={idx} marked={marked}/>;
+              }
+            }
+            let Marked =false;
+            return <Card product={product} key= {idx} Marked={Marked} />;
+           // console.log(el);
+            
+            // if(bookmarkList[]){
+
+            // }else{
+            //   return <Card product={product} key= {idx}  />;
+            // }
+
+          })}
+        </div>
+      </Article>
+      <Article>
+        <h2>북마크 리스트</h2>
+        <div>
+          {bookmarkfilter.map((product,idx) => {
+             <Card product={product} key={idx} />;
+             
           })}
         </div>
       </Article>

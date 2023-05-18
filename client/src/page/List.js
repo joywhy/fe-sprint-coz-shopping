@@ -14,6 +14,8 @@ const Container = styled.div`
 
 const List = () => {
   const productList = useSelector((state) => state.products);
+  const bookmarkList = useSelector((state)=>state.bookmark);
+  
   const [filtercategory, setfilterCategory] = useState('All');
   const filterarray = ['All', 'Product', 'Category', 'Exhibition', 'Brand'];
   

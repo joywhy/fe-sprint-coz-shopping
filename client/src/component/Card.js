@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import styled from 'styled-components';
 import Star from '../icon/Star';
 import Modal from './Modal';
-import Backdrop from './Backdrop';
+import { useDispatch } from 'react-redux';
+import { toggleBookmark } from '../store/bookmarkSlice';
 const Container = styled.div`
   width: 264px;
   height: 264px;
@@ -41,26 +42,24 @@ const Des = styled.div`
     color: #452cdd;
   }
 `;
-const Card = (props) => {
-  const type= props.type;
-  const title= props.title;
-  const imgUrl= props.imgUrl;
-  const discount= props.discount;
-  const price= props.price;
-  const brandName= props.brandName;
-  const follower= props.follower;
-  const brandImg= props.brandImg;
-  const subTitle= props.subTitle;
+const Card = ({product}) => {
+  const dispatch = useDispatch();
 
   const [isOpenModal,SetIsOpenModal]=useState(false);
  const ModalHandler=()=>{
   SetIsOpenModal(!isOpenModal);
   
  }
- const [isMarked,setIsMarked] =useState(false);
+ const isMarkedProduct =product.marked;
+ console.log(product.marked);
+ 
+ const [isMarked,setIsMarked] =useState(isMarkedProduct);
+
  const markedHandler =(event)=>{
   event.stopPropagation();//부모 엘리먼트에게도 이벤트가 전파되는 것을 방지
   setIsMarked(!isMarked);
+
+  dispatch(toggleBookmark(product));
  }
   return (
 
@@ -68,20 +67,14 @@ const Card = (props) => {
       {/* 모달창 */}
       {isOpenModal
           ? ReactDOM.createPortal(
-              <Modal ModalHandler={ModalHandler} imgUrl={imgUrl} title={title} brandImg={brandImg} type={type} brandName={brandName} markedHandler={markedHandler} isMarked={isMarked}/>,
+              <Modal ModalHandler={ModalHandler} imgUrl={product.image_url} title={product.title} brandImg={product.brand_image_url} type={product.type} brandName={product.brandName} markedHandler={markedHandler} isMarked={isMarked}/>,
               document.getElementById('modal-root'),
             )
           : null}
-              {/* {isOpenModal
-          ? ReactDOM.createPortal(
-              <Backdrop ModalHandler={ModalHandler}/>,
-              document.getElementById('backdrop-root'),
-            )
-          : null}   */}
 
       <Container onClick={ModalHandler}  >
         <div className="imgwrap">
-          {type === 'Brand' ?<Cardimg src={brandImg} /> : <Cardimg src={imgUrl} /> }
+          {product.type === 'Brand' ?<Cardimg src={product.brand_image_url} /> : <Cardimg src={product.image_url} /> }
           {/* 북마크 아이콘 */}
           {isMarked? 
           <div onClick={markedHandler}>
@@ -94,42 +87,42 @@ const Card = (props) => {
           }
         </div>
   
-        {type === 'Product' ? (// 컴포넘트
+        {product.type === 'Product' ? (// 컴포넘트
           <div className='deswrap'>
             <Des>
-              <h3>{title}</h3>
-              <p className="discount"> {discount} %</p>
+              <h3>{product.title}</h3>
+              <p className="discount"> {product.discount} %</p>
             </Des>
             <Des>
               <div></div>
-              <p>{price} 원</p>
+              <p>{product.price} 원</p>
             </Des>
           </div>
-        ) : type === 'Category' ? (
+        ) : product.type === 'Category' ? (
           <div>
             <Des>
-              <h3># {title}</h3>
+              <h3># {product.title}</h3>
             </Des>
           </div>
-        ) : type === 'Brand' ? (
+        ) : product.type === 'Brand' ? (
           <div>
             <Des>
-              <h3>{brandName}</h3>
+              <h3>{product.brandName}</h3>
               <p>관심고객수</p>
             </Des>
             <Des>
               <div></div>
-              <p>{follower}</p>
+              <p>{product.follower}</p>
             </Des>
           </div>
-        ) : type === 'Exhibition' ? (
+        ) : product.type === 'Exhibition' ? (
           <div>
             <Des>
-              <h3>{title}</h3>
+              <h3>{product.title}</h3>
               <p></p>
             </Des>
             <Des>
-              <div>{subTitle}</div>
+              <div>{product.subtitle}</div>
             
             </Des>
           </div>
