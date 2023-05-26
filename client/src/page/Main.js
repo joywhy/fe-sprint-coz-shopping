@@ -5,10 +5,10 @@ import { useSelector } from 'react-redux';
 
 const Container = styled.div`
   margin: 0 76px;
-  //border: 1px solid red;
   margin-top: 24px;
 `;
 const Article = styled.article`
+
   > h2 {
     width: auto;
     display: flex;
